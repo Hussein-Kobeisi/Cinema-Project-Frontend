@@ -1,0 +1,37 @@
+html{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+    /* background-color: aquamarine; */
+    background-image: linear-gradient(rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 16%, rgba(8, 24, 131, 1) 33%, rgba(5, 103, 183, 1) 45%, rgba(1, 195, 244, 1) 63%, rgba(207, 246, 255, 1) 100%);
+    text-align: center;
+}
+
+h1 {
+    
+    font-size: 100px;
+    padding: 10%;
+    margin: 0;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+}
+
+.formInpt {
+    font-size: 20px;
+    border-radius: 0.5rem;
+    border: 3px solid white;
+    background-color: black;
+    color: white;
+    padding: .15rem;
+}
+
+.formBtn{
+    font-size: 20px;
+    border-radius: 0.5rem;
+    background-color: rgba(5, 103, 183, 1);
+    color: white;
+    border: 1px solid white;
+    padding: 0.3rem;
+}
