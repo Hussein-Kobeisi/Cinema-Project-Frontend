@@ -5,6 +5,7 @@ const emailReg =
     ;
 const nameReg = /^[a-zA-Z0-9_]{3,20}$/;
 const phpControllers = "http://localhost/Cinema-Project/Cinema-Project-Backend/Controllers/";
+const MoviePageHTML = "../Pages/Movie.html";
 
 
 document.getElementById("loginForm")
@@ -16,38 +17,70 @@ document.getElementById("loginForm")
             const email = data.get('emailInput').toLowerCase();
 
             //handle errors
-            succMsg.style.display = "none";
-            errorMsg.style.display = "inline-block";
+            hideSucc();
             if(name=="" || email=="")
-                errorMsg.innerHTML = "Please fill all the fields";
+                showError("Please fill all the fields");
             else if(!name.toLowerCase().match(nameReg))
-                errorMsg.innerHTML = "Please enter a valid Username between 3-20 characters";
+                showError("Please enter a valid Username between 3-20 characters");
             else if(!email.match(emailReg))
-                errorMsg.innerHTML = "Please enter a valid Email";
+                showError("Please enter a valid Email");
             else
-                errorMsg.style.display = "none";
+                hideError();
 
             if(errorMsg.style.display != "none")
                 return;
 
-            //else fecth data
+            //handle Login
             if(event.submitter.value === "Login"){
                 axios.get(phpControllers+"get_users.php?email="+email)
                 .then((res) => {
                     console.log(res.data);
                     
                     if(res.data.status == "404"){
-                        errorMsg.style.display = "inline-block";
-                        errorMsg.innerHTML = "User not found";
+                        showError("User not found");
                         return;
                     }
 
-                    succMsg.style.display = "inline-block";
-                    succMsg.innerHTML = "Successful Login!";
+                    showSucc("Successful Login!");
+                    window.location.href = MoviePageHTML;
                     })
                 .catch((err) => console.log(err));
-            }else if(event.submitter.value === "Sign Up"){
-                errorMsg.style.display = "inline-block";
-                errorMsg.innerHTML = "Sign up out of service";
+            }
+            
+            //handle Sign Up
+            else if(event.submitter.value === "Sign Up"){
+                axios.post(phpControllers+"create_users.php",{email: email, name: name})
+                .then((res) => {
+                    console.log(res.data);
+                    showSucc("Sign Up Successful!");
+                    window.location.href = MoviePageHTML;
+                    })
+                .catch((err) => {
+                    if(err.response.data.error == "Duplicate Entry"){
+                        console.log("Error: Duplicate entry");
+                        showError("User Already Exists");
+                    }else{
+                        console.log(err);
+                        showError("Failed");
+                    }
+                })
             }
         })
+
+function showError(msg){
+    errorMsg.style.display = "inline-block";
+    errorMsg.innerHTML = msg;
+}
+
+function showSucc(msg){
+    succMsg.style.display = "inline-block";
+    succMsg.innerHTML = msg;
+}
+
+function hideError(){
+    errorMsg.style.display = "none";
+}
+
+function hideSucc(){
+    succMsg.style.display = "none";
+}
