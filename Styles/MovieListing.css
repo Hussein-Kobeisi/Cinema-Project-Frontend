@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+
+.headerDiv{
+    height: 30dvh;
+    background-color: #000e7b;
+    color: white;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 15dvh;
+    padding: .2em;
+    padding-bottom: .1em;
+    margin: 0;
+}
+
+h5{
+    font-size: 2dvh;
+    margin: 0;
+}
+
+.subHeader{
+    background-color: #00ccff;
+    font-size: 5dvh;
+    font-weight: bold;
+    padding: 1em;
+}
+
+.moviesContainer{
+    margin: 5dvw;
+    display: grid;
+    width: 90dvw;
+
+    grid-template-columns: repeat(3, calc(30dvw - (2dvw / 3)));
+    grid-auto-rows: 15dvw;
+    column-gap: 1dvw;
+    row-gap: 1dvw;
+    border: red solid 3px;
+}
+
+.movieCard{
+    background-color: #7be5ff;
+    border: red solid 3px;
+}
+
+@media (min-height: 900px){
+    .headerDiv{
+        height: 25dvh;
+    }
+
+    h1{
+        font-size: 12dvh;
+    }
+
+    .subHeader{
+        font-size: 3dvh;
+    }
+
+    .moviesContainer{
+        margin: 5dvw;
+
+        grid-template-columns: repeat(2, calc(89dvw / 2));
+        grid-auto-rows: 22dvw;
+    }
+}

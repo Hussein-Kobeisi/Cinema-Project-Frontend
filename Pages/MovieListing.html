@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Movie Listing</title>
+        <link rel = "stylesheet" href = "../Styles/MovieListing.css">
+    </head>
+    <body>
+        <div class="headerDiv">
+            <h1>MOVIES</h1>
+            <h5>...I..guess?</h5>
+        </div>
+        <div class="subHeader">
+            Showing NOW
+        </div>
+        <div class="moviesContainer" id="showingContainer">
+            <!-- template divs -->
+            <div class="movieCard" id="movieCardTemplate" style="display:none"></div>
+        </div>
+
+        <div class="subHeader">
+            Coming SOON
+        </div>
+        <div class="moviesContainer" id="comingContainer">
+        </div>
+
+    </body>
+    <!-- <script>setInterval(function() {location.reload();}, 1000);</script> -->
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../Scripts/MovieListing.js"></script>
+</html>

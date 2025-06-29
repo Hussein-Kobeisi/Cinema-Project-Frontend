@@ -6,6 +6,7 @@ const emailReg =
 const nameReg = /^[a-zA-Z0-9_]{3,20}$/;
 const phpControllers = "http://localhost/Cinema-Project/Cinema-Project-Backend/Controllers/";
 const MoviePageHTML = "../Pages/Movie.html";
+const MoviePageListHTML = "../Pages/MovieListing.html";
 
 
 document.getElementById("loginForm")
@@ -42,7 +43,7 @@ document.getElementById("loginForm")
                     }
 
                     showSucc("Successful Login!");
-                    window.location.href = MoviePageHTML;
+                    window.location.href = MoviePageListHTML;
                     })
                 .catch((err) => console.log(err));
             }
@@ -53,7 +54,7 @@ document.getElementById("loginForm")
                 .then((res) => {
                     console.log(res.data);
                     showSucc("Sign Up Successful!");
-                    window.location.href = MoviePageHTML;
+                    window.location.href = MoviePageListHTML;
                     })
                 .catch((err) => {
                     if(err.response.data.error == "Duplicate Entry"){
