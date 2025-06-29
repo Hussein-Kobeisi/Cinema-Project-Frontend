@@ -1,12 +1,11 @@
+import * as api from "./Api.js";
+
 const errorMsg = document.getElementById("error");
 const succMsg = document.getElementById("success");
 const emailReg = 
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     ;
 const nameReg = /^[a-zA-Z0-9_]{3,20}$/;
-const phpControllers = "http://localhost/Cinema-Project/Cinema-Project-Backend/Controllers/";
-const MoviePageHTML = "../Pages/Movie.html";
-const MoviePageListHTML = "../Pages/MovieListing.html";
 
 
 document.getElementById("loginForm")
@@ -33,28 +32,29 @@ document.getElementById("loginForm")
 
             //handle Login
             if(event.submitter.value === "Login"){
-                axios.get(phpControllers+"get_users.php?email="+email)
+                console.log(api.loginUserController+email);
+                axios.get(api.loginUserController+email)
                 .then((res) => {
                     console.log(res.data);
                     
-                    if(res.data.status == "404"){
+                    if(!res.data.verified){
                         showError("User not found");
                         return;
                     }
 
                     showSucc("Successful Login!");
-                    window.location.href = MoviePageListHTML;
+                    window.location.href = api.MoviePageListHTML;
                     })
                 .catch((err) => console.log(err));
             }
             
             //handle Sign Up
             else if(event.submitter.value === "Sign Up"){
-                axios.post(phpControllers+"create_users.php",{email: email, name: name})
+                axios.post(api.createUserController,{email: email, name: name})
                 .then((res) => {
                     console.log(res.data);
                     showSucc("Sign Up Successful!");
-                    window.location.href = MoviePageListHTML;
+                    window.location.href = api.MoviePageListHTML;
                     })
                 .catch((err) => {
                     if(err.response.data.error == "Duplicate Entry"){
