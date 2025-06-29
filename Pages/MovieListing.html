@@ -13,7 +13,10 @@
         </div>
         <div class="moviesContainer" id="showingContainer">
             <!-- template divs -->
-            <div class="movieCard" id="movieCardTemplate" style="display:none"></div>
+            <div class="movieCard" id="movieCardTemplate" style="display:none">
+                <div class="movieImg">                </div>
+                <div class="movieTitle" id="movieTitle">                </div>
+            </div>
         </div>
 
         <div class="subHeader">
@@ -25,5 +28,5 @@
     </body>
     <!-- <script>setInterval(function() {location.reload();}, 1000);</script> -->
     <script src="../node_modules/axios/dist/axios.min.js"></script>
-    <script src="../Scripts/MovieListing.js"></script>
+    <script type="module" src="../Scripts/MovieListing.js"></script>
 </html>

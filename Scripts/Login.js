@@ -42,6 +42,7 @@ document.getElementById("loginForm")
                         return;
                     }
 
+                    storeUserInLocal(email);
                     showSucc("Successful Login!");
                     window.location.href = api.MoviePageListHTML;
                     })
@@ -84,4 +85,18 @@ function hideError(){
 
 function hideSucc(){
     succMsg.style.display = "none";
+}
+
+function storeUserInLocal(email){
+    axios.get(api.getUserController+"email="+email)
+    .then((res) => {
+        console.log(res.data);
+        
+        if(!res.data.status == "404"){
+            console.log("Error: user not found")
+            return;
+        }
+        localStorage.setItem("user", res.data);
+        })
+    .catch((err) => console.log(err));
 }

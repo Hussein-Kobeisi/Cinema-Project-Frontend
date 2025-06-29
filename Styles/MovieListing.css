@@ -42,15 +42,42 @@ h5{
     grid-auto-rows: 15dvw;
     column-gap: 1dvw;
     row-gap: 1dvw;
+    box-sizing: border-box;
     border: red solid 3px;
 }
 
 .movieCard{
     background-color: #7be5ff;
+    box-sizing: border-box;
+    border: pink solid 3px;
+}
+
+.movieImg{
+    background-color: #51acc3;
+    height: 66%;
+
+    box-sizing: border-box;
     border: red solid 3px;
 }
 
-@media (min-height: 900px){
+.movieTitle{
+    height: 33%;
+    
+    font-size: 2em;
+    color: white;
+    -webkit-text-stroke: .15em rgb(0, 26, 51);
+    paint-order: stroke fill;
+    font-weight: 600;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    border: rgb(0, 255, 119) solid 3px;
+}
+
+@media (max-aspect-ratio: 1/1){
     .headerDiv{
         height: 25dvh;
     }
