@@ -10,9 +10,13 @@ const titleHeader = document.getElementById("movieTitleHeader")
 const movie = JSON.parse(localStorage.getItem('movie'))
 
 //running code
-console.log(movie.seats[0])
-
 titleHeader.innerHTML = movie.title
+
+if(!movie.seats.length){
+    seatContainer.innerHTML = "No Seats Available"
+    seatContainer.style.display = "block"
+}
+
 movie.seats.forEach((seat, i) => {
     addSeat(seat)
 });
@@ -38,5 +42,5 @@ function toggleSeat(clicker){
     if(clicker.style.backgroundColor != "yellowgreen")
         clicker.style.backgroundColor = "yellowgreen"
     else
-        clicker.style.backgroundColor = "yellowgreen"
+        clicker.style.backgroundColor = "grey"
 }

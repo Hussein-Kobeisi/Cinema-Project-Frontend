@@ -10,4 +10,4 @@ export const createUserController = phpControllersMain+"create_users.php";
 export const getAllMoviesController = phpControllersMain+"get_movies.php";
 
 export const MoviePageHTML = "../Pages/Movie.html";
-export const MoviePageListHTML = "../Pages/MovieListing.html";
+export const MovieListPageHTML = "../Pages/MovieListing.html";

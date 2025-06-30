@@ -1,12 +1,19 @@
 import * as api from "./Api.js";
 
+
+//initializers
+window.goToMovie = goToMovie;
+
 const movieCardTemplate = document.getElementById("movieCardTemplate");
 const showingContainer = document.getElementById("showingContainer");
 const comingContainer = document.getElementById("comingContainer");
 
+let movies = null
+
+//main code
+
 window.onload = async function () {
-    const movies = await getAllMovies()
-    localStorage.setItem('movie', JSON.stringify(movies[0]))
+    movies = await getAllMovies()
     const showingMovies = []
     const comingMovies = []
     movies.forEach((movie, i) => {
@@ -16,10 +23,10 @@ window.onload = async function () {
             comingMovies.push(movie)
     });
 
-    console.log("show:")
-    console.log(showingMovies)
-    console.log("come:")
-    console.log(comingMovies)
+    // console.log("show:")
+    // console.log(showingMovies)
+    // console.log("come:")
+    // console.log(comingMovies)
 
     showingMovies.forEach((movie, i) => {
         addMovieCardTo(showingContainer, movie)
@@ -29,6 +36,8 @@ window.onload = async function () {
         addMovieCardTo(comingContainer, movie)
     });
 }
+
+//functions
 
 function getAllMovies(){
   return axios.get(api.getAllMoviesController)
@@ -46,5 +55,17 @@ function addMovieCardTo(container, movie) {
     let card = movieCardTemplate.cloneNode(true);
     card.style.display = "block";
     card.querySelector("#movieTitle").innerHTML = movie.title;
+    card.querySelector("#cardButton").value = movie.id;
     container.appendChild(card);
+}
+
+function goToMovie(id){
+    movies.forEach((movie, i) => {
+        if(movie.id == id)
+        {
+            localStorage.setItem('movie', JSON.stringify(movie))
+            window.location.href = api.MoviePageHTML
+            return
+        }
+    });
 }

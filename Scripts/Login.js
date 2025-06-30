@@ -55,7 +55,7 @@ document.getElementById("loginForm")
                 .then((res) => {
                     console.log(res.data);
                     showSucc("Sign Up Successful!");
-                    window.location.href = api.MoviePageListHTML;
+                    window.location.href = api.MovieListPageHTML;
                     })
                 .catch((err) => {
                     if(err.response.data.error == "Duplicate Entry"){
