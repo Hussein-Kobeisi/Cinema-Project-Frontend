@@ -1,0 +1,136 @@
+:root {
+  --border-radius: 5dvw;
+  --seat-gap: 0.5dvw;
+  --seat-size: calc((90dvw / 14) - var(--seat-gap));
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+
+.headerDiv{
+    height: 20dvh;
+    background-color: #000e7b;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movieTitleHeader{
+    font-size: 10dvh;
+}
+
+.detailsContaier{
+    display: flex;
+    flex-direction: row;
+    width: 80dvw;
+    height: 30dvw;
+    border-radius: var(--border-radius);
+    margin: auto;
+}
+
+.movieImg{
+    height: 100%;
+    width: 67%;
+    background-color: rgb(127, 189, 255);   
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.description{
+    
+    height: 100%;
+    width: 33%;
+    
+    box-sizing: border-box;
+    padding: 5%;
+    
+    text-align: left;
+
+    font-size: 1.3dvw;
+    font-weight: 700;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    background-color: #0083a0;  
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.centerH{
+    align-items: center;
+    padding-bottom: 7dvh;
+    padding-top: 14dvh;
+}
+
+.seatsContainer{
+    display: grid;
+    width: 90dvw;
+    gap: var(--seat-gap);
+    background-color: #3d3d3d;
+    border: 0;
+    border-radius: calc(var(--seat-gap) * 6 );
+    padding: calc(var(--seat-gap) * 2 );
+    grid-template-rows:
+    [A] 1fr
+    [B] 1fr
+    [C] 1fr;
+    grid-template-columns: repeat(14, 1fr);
+    margin: auto;
+    margin-bottom: calc(var(--seat-size) * 1 );
+}
+
+.seat{
+    height: var(--seat-size);
+    width: var(--seat-size);
+    color: white;
+    font-weight: 600;
+    background-color: gray;
+    border: 0;
+    border-radius: calc(var(--seat-size) / 3);
+    
+}
+
+@media (max-aspect-ratio: 1/1){
+    .headerDiv{
+        height: 20dvh;
+    }
+
+    .movieTitleHeader{
+        font-size: 12dvw;
+    }
+
+    .centerH{
+        padding-bottom: 7dvh;
+        padding-top: 7dvh;
+    }
+
+    .detailsContaier{
+        flex-direction: column;
+        height: 60dvw;
+
+    }
+
+        .movieImg{
+        width: 100%;  
+        border-radius: 0;
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+    }
+
+    .description{
+        width: 100%;
+        border-radius: 0;
+        font-size: 2.5dvw;
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+}

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title id="pageTitle">Movie Name</title>
+        <link rel = "stylesheet" href = "../Styles/Movie.css">
+    </head>
+    <body>
+        <div class="headerDiv">
+            <div class="movieTitleHeader" id="movieTitleHeader">MOVIES</div>
+        </div>
+        
+        <div class="centerH">
+            <div class="detailsContaier" id="detailsContaier">
+                <img class="movieImg" id="movieImg">
+                <div class="description" id="description">
+                    A group of characters do stuff - some of it important, some of it just... there. There's definitely a goal, 
+                    maybe even a plan, but things don't go exactly as expected. Emotions happen. Something explodes (possibly metaphorically). 
+                    In the end, everyone learns something, or maybe they don't. Either way, it's a movie.
+                </div>
+            </div>
+        </div>
+
+        <div class="seatsContainer" id="seatsContainer">
+            <!-- template divs -->
+            <button class="seat" id="seatTemplate" style="display:none" onclick="toggleSeat(this)">
+
+            </button>
+        </div>
+
+    </body>
+    <!-- <script>setInterval(function() {location.reload();}, 1000);</script> -->
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script type="module" src="../Scripts/Movie.js"></script>
+</html>

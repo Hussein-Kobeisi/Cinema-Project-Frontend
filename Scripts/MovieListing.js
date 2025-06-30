@@ -6,7 +6,7 @@ const comingContainer = document.getElementById("comingContainer");
 
 window.onload = async function () {
     const movies = await getAllMovies()
-
+    localStorage.setItem('movie', JSON.stringify(movies[0]))
     const showingMovies = []
     const comingMovies = []
     movies.forEach((movie, i) => {
